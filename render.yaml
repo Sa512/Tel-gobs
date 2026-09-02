@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: telegram-job-bot
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: CLAUDE_MODEL
+        value: claude-sonnet-4-6
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: DB_PATH
+        value: /data/job_bot.db
+      - key: CV_OUTPUT_DIR
+        value: /data/generated_cvs
+    disk:
+      name: bot-data
+      mountPath: /data
+      sizeGB: 1

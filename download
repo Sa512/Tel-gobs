@@ -1,0 +1,6 @@
+.env
+job_bot.db
+generated_cvs/
+venv/
+__pycache__/
+*.pyc
